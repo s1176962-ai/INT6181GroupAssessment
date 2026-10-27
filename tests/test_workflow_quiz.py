@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from workflow_support import create_workspace
+from tests.workflow_support import create_workspace
 
 from learning_platform.repositories import ProgressRepository
 from learning_platform.services import QuizEngine, select_questions

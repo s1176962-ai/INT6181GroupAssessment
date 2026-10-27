@@ -5,7 +5,7 @@ import unittest
 from dataclasses import replace
 from pathlib import Path
 
-from workflow_support import create_workspace
+from tests.workflow_support import create_workspace
 
 from learning_platform.maintenance import QuestionEditor
 from learning_platform.models import Question
