@@ -256,6 +256,40 @@ class RoleGuiTests(unittest.TestCase):
         self.assertIsNone(self.app.user)
         self.assertFalse(self.app.auth.progress_path(self.student).exists())
 
+    def test_header_login_and_logout_navigation(self):
+        """Header account action follows guest, signed-in and translated states."""
+        self.app.enter_guest()
+        self.assertEqual(self.app.identity.cget("text"), "访客")
+        self.assertEqual(self.app.account_action.cget("text"), "登录")
+        self.app.account_action.invoke()
+        self.assertFalse(self.app.signed_in)
+        self.assertTrue(self.app.login_button.winfo_exists())
+        self.enter(self.student)
+        self.assertEqual(self.app.identity.cget("text"), "Student")
+        self.assertEqual(self.app.account_action.cget("text"), "退出登录 / 切换账户")
+        self.app.account_action.invoke()
+        self.assertIsNone(self.app.user)
+        self.assertEqual(self.app.progress.store.path, self.app.guest_progress_path)
+        self.app.tr.set_language("en")
+        self.app.enter_guest()
+        self.assertEqual(self.app.account_action.cget("text"), self.app.tr("登录"))
+
+    def test_display_settings_apply_and_persist(self):
+        """Applying layout preferences retains the signed-in account."""
+        self.enter(self.student)
+        self.app.settings()
+        self.app.window_choice.set("960x640")
+        self.app.compact_choice.set(False)
+        self.app.save_display()
+        self.assertEqual(self.app.display_store.load(), {"size": "960x640", "compact": False})
+        self.assertFalse(self.app.compact)
+        self.assertEqual(self.app.user["id"], self.student["id"])
+        self.app.window_choice.set(self.app.window_choices[0])
+        self.app.compact_choice.set(True)
+        self.app.save_display()
+        self.assertTrue(self.app.compact)
+        self.assertEqual(self.app.display_store.load()["size"], "auto")
+
     def test_user_form_create_modify_disable_and_details(self):
         self.enter(self.admin)
         self.app.manage_users()

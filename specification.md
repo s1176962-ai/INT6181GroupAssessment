@@ -1,7 +1,7 @@
 # Software Requirements Specification (SRS)
 
-Version 1.2 — updated 2026-10-26: administrator permissions, user management,
-6–16-character passwords, lettered options and Chinese/English interface settings.
+Version 1.3 — updated 2026-10-27: refreshed desktop layout, persistent header account navigation,
+and isolated workflow regression tests. Version 1.2 account and language requirements remain applicable.
 
 ## Project Title
 Configurable Multi-Subject Python Quiz Platform
@@ -267,3 +267,15 @@ The following features are not required for the initial release:
 - Support for every possible question type.
 
 These features may be considered in future versions after the core application is stable.
+
+## 8. Interface and regression requirements (Version 1.3)
+
+- The top header shall display guest identity with an adjacent login action; authenticated users shall see their name and a logout/switch-account action.
+- Login navigation shall open the account form. Logout shall clear the active account and restore the guest progress path.
+- Primary actions, keyboard focus, selected answers and feedback shall be visually distinguishable.
+- Home shall present progress summaries and responsive feature cards; long pages shall remain scrollable.
+- Workflow unittest cases shall use temporary data and verify quiz persistence, account isolation, authorization and question-bank maintenance.
+
+### 8.1 Laptop display preferences
+
+Settings shall offer automatic sizing and 960x640, 1080x720, 1280x800 presets, capped to the current screen with taskbar space reserved. Compact layout shall be enabled by default and configurable without changing system display resolution. Preferences shall persist locally; long content shall retain scrolling.

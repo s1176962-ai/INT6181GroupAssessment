@@ -194,3 +194,11 @@ INT6181GroupAssessment/
 2026-10-27 从 caseStudy/final 独立复制到 `D:\develop\workplace\INT6181GroupAssessment`，不依赖原 caseStudy 目录。账户、管理员权限、学习进度、题库、图片和备份均保留。原目录作为回退副本保留；两份目录今后的数据不会自动同步，请使用本目录运行和维护。
 
 2026-10-27 路径更正：正式工作目录为 `D:\develop\workplace\INT6181GroupAssessment`。此前误放的 `D:\develop\INT6181GroupAssessment` 保留为备份，后续请使用 workplace 下的正式目录。
+
+## 界面与测试更新（1.3）
+
+顶部横栏右侧的访客文字旁提供登录入口，登录后可在同一位置退出或切换账户。首页采用统计卡片和功能分区。
+
+新增用例及分组运行命令见 [TEST_CASES](docs/TEST_CASES.md)，布局维护见 [UI_GUIDE](docs/UI_GUIDE.md)。请关闭旧程序，再从本目录运行 `python main.py`；已打开的 Python 窗口不会自动加载代码修改。
+
+笔记本使用建议：进入设置 → 窗口与布局，选择自动适应屏幕并启用紧凑布局，再点击应用窗口与布局。设置会保存，重新启动后继续生效。

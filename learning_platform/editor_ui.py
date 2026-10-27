@@ -73,13 +73,25 @@ class EditorPage:
         self.summary = app.label("")
         actions = ttk.Frame(app.body)
         actions.pack(fill="x", pady=8)
-        for title, callback in [
-            (self.tr("新增题目"), self.edit),
-            (self.tr("编辑选中题目"), self.edit_selected),
-            (self.tr("删除选中题目"), self.delete_selected),
-            (self.tr("返回首页"), app.home),
-        ]:
-            ttk.Button(actions, text=title, command=callback).pack(side="left", padx=4)
+        for index, (title, callback) in enumerate(
+            [
+                (self.tr("新增题目"), self.edit),
+                (self.tr("编辑选中题目"), self.edit_selected),
+                (self.tr("删除选中题目"), self.delete_selected),
+                (self.tr("返回首页"), app.home),
+            ]
+        ):
+            ttk.Button(
+                actions,
+                text=title,
+                command=callback,
+                style="Accent.TButton"
+                if index == 0
+                else "Danger.TButton"
+                if index == 2
+                else "TButton",
+            ).grid(row=index // 2, column=index % 2, sticky="ew", padx=4, pady=5)
+        actions.columnconfigure((0, 1), weight=1)
         if app.bank.warnings:
             app.label(self.tr("题库诊断：\n") + "\n".join(app.bank.warnings))
         self.refresh_list()
@@ -93,9 +105,14 @@ class EditorPage:
             if (self.subject.get() == self.tr("全部") or q.subject == self.subject.get())
             and term in f"{q.id} {q.question} {q.topic}".casefold()
         ]
-        for q in matches:
+        self.table.tag_configure("alternate", background="#F4F8FA")
+        for index, q in enumerate(matches):
             self.table.insert(
-                "", "end", iid=q.id, values=(q.id, q.subject, q.topic, q.difficulty, q.question)
+                "",
+                "end",
+                iid=q.id,
+                values=(q.id, q.subject, q.topic, q.difficulty, q.question),
+                tags=("alternate",) if index % 2 else (),
             )
         self.summary.configure(
             text=self.tr("显示 {0} / {1} 道题", len(matches), len(self.app.questions))
@@ -195,7 +212,7 @@ class EditorPage:
         self.explanation.insert("1.0", data["explanation"])
         self.explanation.pack(fill="x")
         app.button(self.tr("预览题目"), self.preview)
-        app.button(self.tr("保存题目"), self.save)
+        app.button(self.tr("保存题目"), self.save, style="Accent.TButton")
         app.button(self.tr("取消并返回列表"), self.cancel)
         self.initial = self.snapshot()
 

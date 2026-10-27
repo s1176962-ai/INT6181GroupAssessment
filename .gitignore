@@ -13,3 +13,6 @@ data/backups/
 data/account_backups/
 data/settings.json
 .tmp-*
+
+# Local window preferences
+data/display.json

@@ -1,6 +1,6 @@
 # SRS 与实现决策
 
-完整、权威的需求规格及本次 1.2 更新位于 [specification.md](../specification.md)。此处引用原文，避免维护两份完整需求造成不一致。
+完整、权威的需求规格及本次 1.3 更新位于 [specification.md](../specification.md)。此处引用原文，避免维护两份完整需求造成不一致。
 
 ## 本次实现决策
 

@@ -38,18 +38,20 @@ class UserPage:
         scroll.pack(side="right", fill="y")
         self.table.pack(fill="x")
         self.users = {user["id"]: user for user in users}
-        for user in users:
+        self.table.tag_configure("alternate", background="#F4F8FA")
+        for index, user in enumerate(users):
             self.table.insert(
                 "",
                 "end",
                 iid=user["id"],
+                tags=("alternate",) if index % 2 else (),
                 values=(
                     user["name"],
                     self.tr("管理员") if user["role"] == "admin" else self.tr("普通用户"),
                     self.tr("启用") if user["enabled"] else self.tr("停用"),
                 ),
             )
-        app.button(self.tr("新增账户"), self.edit)
+        app.button(self.tr("新增账户"), self.edit, style="Accent.TButton")
         app.button(self.tr("修改选中账户 / 重置密码"), self.edit_selected)
         app.button(self.tr("查看选中账户学习数据"), self.details)
         app.button(self.tr("刷新列表"), self.show_list)
@@ -101,7 +103,7 @@ class UserPage:
         ttk.Checkbutton(
             app.body, text=self.tr("允许登录（取消勾选即停用）"), variable=self.enabled
         ).pack(anchor="w", pady=10)
-        app.button(self.tr("保存账户"), self.save)
+        app.button(self.tr("保存账户"), self.save, style="Accent.TButton")
         app.button(self.tr("取消并返回列表"), self.cancel)
         self.initial = self.snapshot()
 
