@@ -9,14 +9,14 @@
 在 PowerShell 中执行：
 
 ```powershell
-cd D:\develop\INT6181GroupAssessment
+cd D:\develop\workplace\INT6181GroupAssessment
 python main.py
 ```
 
 也可以运行 `python -m learning_platform`。从任意目录启动时可以指定入口绝对路径：
 
 ```powershell
-python D:\develop\INT6181GroupAssessment\main.py
+python D:\develop\workplace\INT6181GroupAssessment\main.py
 ```
 
 先运行 `python -m tkinter` 可以检查 Tcl/Tk 环境。Linux 需要可用的图形桌面，某些发行版需要另装 `python3-tk`。项目目录需要允许写入，以保存学习记录。不要同时运行多个实例修改同一份进度。
@@ -115,7 +115,7 @@ python D:\develop\INT6181GroupAssessment\main.py
 ## 测试
 
 ```powershell
-cd D:\develop\INT6181GroupAssessment
+cd D:\develop\workplace\INT6181GroupAssessment
 python -m unittest discover -s tests -v
 ```
 
@@ -191,4 +191,6 @@ INT6181GroupAssessment/
 
 ## 独立项目目录
 
-2026-10-27 从 caseStudy/final 独立复制到 `D:\develop\INT6181GroupAssessment`，不依赖原 caseStudy 目录。账户、管理员权限、学习进度、题库、图片和备份均保留。原目录作为回退副本保留；两份目录今后的数据不会自动同步，请使用本目录运行和维护。
+2026-10-27 从 caseStudy/final 独立复制到 `D:\develop\workplace\INT6181GroupAssessment`，不依赖原 caseStudy 目录。账户、管理员权限、学习进度、题库、图片和备份均保留。原目录作为回退副本保留；两份目录今后的数据不会自动同步，请使用本目录运行和维护。
+
+2026-10-27 路径更正：正式工作目录为 `D:\develop\workplace\INT6181GroupAssessment`。此前误放的 `D:\develop\INT6181GroupAssessment` 保留为备份，后续请使用 workplace 下的正式目录。
