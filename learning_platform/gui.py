@@ -376,7 +376,11 @@ class Application:
             cards.append(card)
 
         def reflow(event):
-            columns = 3 if self.compact and event.width >= 850 else (2 if event.width >= 600 else 1)
+            columns = (
+                3
+                if self.compact and len(cards) >= 6 and event.width >= 850
+                else (2 if event.width >= 600 else 1)
+            )
             for column in range(3):
                 frame.columnconfigure(
                     column,

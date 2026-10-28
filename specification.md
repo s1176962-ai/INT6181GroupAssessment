@@ -279,3 +279,5 @@ These features may be considered in future versions after the core application i
 ### 8.1 Laptop display preferences
 
 Settings shall offer automatic sizing and 960x640, 1080x720, 1280x800 presets, capped to the current screen with taskbar space reserved. Compact layout shall be enabled by default and configurable without changing system display resolution. Preferences shall persist locally; long content shall retain scrolling.
+
+The four standard home actions shall use a two-by-two grid at normal window widths. Compact administrator views may use three columns for six actions; narrow windows shall fall back to one column.

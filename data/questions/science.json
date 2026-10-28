@@ -336,7 +336,11 @@
     ],
     "answer": "Recycle nutrients from dead matter",
     "explanation": "Decomposers break down dead organisms and return nutrients to the ecosystem.",
-    "question_image": null,
-    "option_images": null
+    "question_image": "assets/uploads/e8bf43d3fcdd42b3a6262720e4d1fdce.png",
+    "option_images": [
+      null,
+      null,
+      null
+    ]
   }
 ]
